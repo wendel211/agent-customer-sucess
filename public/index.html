@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>agentCustomer · Laboratório de tickets</title>
+  <link rel="stylesheet" href="/assets/style.css"><script type="module" src="/assets/app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="agentCustomer início"><span class="brandmark">a</span>agent<span>Customer</span></a><span class="environment">Laboratório local <span aria-hidden="true">·</span> dados sintéticos</span><span id="connection" class="connection">Desconectado</span></header>
+  <main>
+    <aside class="sidebar" aria-label="Navegação de tickets">
+      <div class="workspace-name"><span class="workspace-avatar">A</span><div>Acme Workspace<small>Atendimento</small></div></div>
+      <div class="nav-label">CAIXA DE ENTRADA</div><div class="nav-active">Tickets <span id="ticket-count">—</span></div>
+      <div class="section-heading">Fila de demonstração</div><nav id="tickets" aria-label="Selecione um ticket"><p class="muted">Conecte o laboratório para carregar os tickets.</p></nav>
+      <form id="connect-form" class="connect-form"><label for="token">Token do laboratório</label><input id="token" type="password" autocomplete="off" required placeholder="DEMO_TOKEN do seu .env"><button class="secondary" type="submit">Conectar</button><p class="muted">A credencial fica apenas nesta aba.</p></form>
+    </aside>
+    <section class="ticket-workspace" aria-labelledby="ticket-title">
+      <div class="breadcrumb">Tickets <span>/</span> <span id="ticket-id">Selecione um ticket</span></div>
+      <div class="ticket-heading"><span class="eyebrow">ATENDIMENTO AO CLIENTE</span><h1 id="ticket-title">Seu atendimento,<br>com mais contexto.</h1><p id="ticket-meta" class="muted">Leia o histórico e prepare uma resposta com referências.</p></div>
+      <div class="conversation-heading"><h2>Conversa</h2><span id="message-count" class="muted">—</span></div>
+      <div id="messages" class="messages"><div class="empty"><span class="empty-symbol" aria-hidden="true">↗</span><h3>Comece por um ticket</h3><p>Conecte o ambiente e selecione uma conversa na fila ao lado.</p></div></div>
+      <section class="composer" aria-labelledby="composer-title"><div class="composer-heading"><h2 id="composer-title">Rascunho de resposta</h2><span>Somente local</span></div><label class="sr-only" for="editor">Edite o rascunho de resposta</label><textarea id="editor" placeholder="Escreva sua resposta ou use uma sugestão do agente…" rows="5"></textarea><div class="composer-footer"><span>Este laboratório não envia mensagens.</span><button id="copy" class="secondary" type="button" disabled>Copiar rascunho</button></div></section>
+    </section>
+    <aside class="agent-panel" aria-labelledby="agent-title">
+      <div class="agent-header"><span class="agent-symbol" aria-hidden="true">✳</span><div><h2 id="agent-title">agentCustomer</h2><p>Copiloto de atendimento</p></div></div>
+      <div id="model-badge" class="model-badge">Modo de demonstração</div>
+      <p class="agent-intro">Uma leitura do caso, os procedimentos relevantes e uma resposta para você revisar.</p>
+      <button id="analyze" class="primary" type="button" disabled>Analisar ticket <span aria-hidden="true">↗</span></button>
+      <button id="cancel" class="text-button" type="button" hidden>Cancelar análise</button>
+      <div id="agent-status" class="agent-status" role="status" aria-live="polite">Selecione um ticket para começar.</div>
+      <section id="suggestion" hidden>
+        <div class="result-meta"><span id="category"></span><span id="priority"></span></div>
+        <h3>Resumo do caso</h3><p id="summary" class="result-text"></p>
+        <h3>Resposta sugerida</h3><p id="draft" class="suggested-draft"></p>
+        <button id="use-draft" class="secondary full-width" type="button" hidden>Usar no editor</button>
+        <h3>Referências</h3><ul id="sources" class="sources"></ul>
+        <div id="questions-wrap" hidden><h3>Informações necessárias</h3><ul id="questions"></ul></div>
+      </section>
+      <div class="agent-footnote"><span aria-hidden="true">◈</span><p>Revise o conteúdo antes de usar. As sugestões não alteram o ticket.</p></div>
+    </aside>
+  </main>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
